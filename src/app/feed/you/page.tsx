@@ -1,7 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { Film, Plus, X } from "lucide-react";
 import { unstable_cache } from "next/cache";
-
 import Image from "next/image";
 import Link from "next/link";
 import {
