@@ -75,8 +75,8 @@ importers:
         specifier: 16.1.6
         version: 16.1.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       next-safe-action:
-        specifier: ^8.1.4
-        version: 8.1.4(next@16.1.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: ^8.1.8
+        version: 8.1.8(next@16.1.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -3553,8 +3553,8 @@ packages:
     resolution: {integrity: sha512-kKHJhxwpR/Okycz4HhQKKlhWe4ASEfPgkSWNmKFHd7+ezuQlxkA5cM3+XkBPvm1gmHen3w53qsYAv+8GwRrBlg==}
     engines: {node: '>=18'}
 
-  next-safe-action@8.1.4:
-    resolution: {integrity: sha512-W7mdtRagBassl0rkCkNQ3rpmDXme/QABzcQ7H6tYIEH4WQiUJl6fuRFmNjkNf9OnXCqcL31bMAw2PpDYjJabcA==}
+  next-safe-action@8.1.8:
+    resolution: {integrity: sha512-e/HZ886xsKtaBr/+rL1ULq6RHlaZoLJR2PMLqkxFES0VKmhMBY/Ov/sOgoBcOqLAE8N9q3swW+95gyiZxoOIKA==}
     engines: {node: '>=18.17'}
     peerDependencies:
       next: '>= 14.0.0'
@@ -8198,7 +8198,7 @@ snapshots:
 
   natural-orderby@5.0.0: {}
 
-  next-safe-action@8.1.4(next@16.1.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+  next-safe-action@8.1.8(next@16.1.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:
       deepmerge-ts: 7.1.5
       next: 16.1.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
