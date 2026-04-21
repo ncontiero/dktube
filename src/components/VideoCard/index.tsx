@@ -102,15 +102,12 @@ export const VideoCardRoot = forwardRef<HTMLDivElement, VideoCardRootProps>(
     );
 
     useEffect(() => {
-      if (timeWatchedB) {
-        setTimeWatched(timeWatchedB);
-        return;
-      }
-      user?.id &&
-        getTimeWatched.execute({
-          videoId: video.id,
-          userId: user.id,
-        });
+      if (timeWatchedB || !user?.id) return;
+
+      getTimeWatched.execute({
+        videoId: video.id,
+        userId: user.id,
+      });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timeWatchedB, user?.id, video.id]);
 

@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { Show } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { ArrowLeft, FilePlus, Search } from "lucide-react";
 import { unstable_cache } from "next/cache";
@@ -95,7 +95,7 @@ export async function Header() {
               </DialogContent>
             </DialogPortal>
           </Dialog>
-          <SignedOut>
+          <Show when="signed-out">
             <Link
               href="/sign-in"
               className={`
@@ -106,8 +106,8 @@ export async function Header() {
             >
               Login
             </Link>
-          </SignedOut>
-          <SignedIn>
+          </Show>
+          <Show when="signed-in">
             <Link
               href="/create-video"
               title="Criar vídeo"
@@ -119,7 +119,7 @@ export async function Header() {
               <FilePlus />
             </Link>
             <UserButton channelId={channel?.id || null} />
-          </SignedIn>
+          </Show>
           <ThemeToggle />
         </div>
       </div>
