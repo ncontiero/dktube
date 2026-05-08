@@ -9,9 +9,9 @@ import { Separator } from "@/components/ui/Separator";
 import { VideoCardOptionsMenu } from "@/components/VideoCardOptions";
 import { prisma } from "@/lib/prisma";
 
-type SearchPageProps = {
+interface SearchPageProps {
   readonly searchParams: Promise<{ q: string | undefined }>;
-};
+}
 
 export async function generateMetadata({
   searchParams,

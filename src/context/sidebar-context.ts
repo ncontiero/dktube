@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-export type SidebarContextProps = {
+export interface SidebarContextProps {
   state: "expanded" | "collapsed";
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -8,6 +8,6 @@ export type SidebarContextProps = {
   setOpenMobile: (open: boolean) => void;
   isMobile: boolean;
   toggleSidebar: () => void;
-};
+}
 
 export const SidebarContext = createContext<SidebarContextProps | null>(null);

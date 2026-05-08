@@ -17,9 +17,10 @@ export async function getMostQualityThumb(youtubeId: string) {
   }
 }
 
+const YOUTUBE_DURATION_REGEX = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/;
+
 export function formatDuration(duration: string) {
-  const regex = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/;
-  const matches = duration.match(regex);
+  const matches = duration.match(YOUTUBE_DURATION_REGEX);
   if (!matches) return "00:00";
 
   const hours = Number.parseInt(matches[1] || "0", 10);

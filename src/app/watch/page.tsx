@@ -23,9 +23,9 @@ import { SaveVideoPlaylistDialog } from "@/components/VideoCardOptions/SaveVideo
 import { prisma, prismaSkip } from "@/lib/prisma";
 import { LikeVideoBtn } from "./LikeVideoBtn";
 
-type WatchPageProps = {
+interface WatchPageProps {
   readonly searchParams: Promise<{ v: string; t: string }>;
-};
+}
 
 const getCachedVideos = unstable_cache(
   async (excludeId?: string) => {

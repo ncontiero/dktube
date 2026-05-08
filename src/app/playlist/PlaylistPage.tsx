@@ -20,10 +20,10 @@ import {
 import { DeletePlaylist } from "./DeletePlaylist";
 import { UpdatePlaylistDialog } from "./UpdatePlaylist";
 
-export type PlaylistPageCompProps = {
+export interface PlaylistPageCompProps {
   readonly userId?: string | undefined;
   readonly playlist: PlaylistProps;
-};
+}
 
 export function PlaylistPageComp({ playlist, userId }: PlaylistPageCompProps) {
   const plImage = playlist.videos[0]?.thumb || "/playlist-img.jpg";

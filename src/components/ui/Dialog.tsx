@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  type ComponentPropsWithoutRef,
-  type ComponentRef,
-  type HTMLAttributes,
-  forwardRef,
-} from "react";
+import type { ComponentProps } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -18,23 +13,23 @@ const DialogPortal = DialogPrimitive.Portal;
 
 const DialogClose = DialogPrimitive.Close;
 
-const DialogOverlay = forwardRef<
-  ComponentRef<typeof DialogPrimitive.Overlay>,
-  ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Overlay
-    ref={ref}
-    className={cn(
-      `
-        data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0
-        data-[state=closed]:animate-out fixed inset-0 z-99999 bg-black/80 backdrop-blur-xs
-      `,
-      className,
-    )}
-    {...props}
-  />
-));
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+function DialogOverlay({
+  className,
+  ...props
+}: ComponentProps<typeof DialogPrimitive.Overlay>) {
+  return (
+    <DialogPrimitive.Overlay
+      className={cn(
+        `
+          data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0
+          data-[state=closed]:animate-out fixed inset-0 z-99999 bg-black/80 backdrop-blur-xs
+        `,
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
 const dialogContentVariants = cva(
   `
@@ -61,75 +56,68 @@ const dialogContentVariants = cva(
 
 export interface DialogContentProps
   extends
-    ComponentPropsWithoutRef<typeof DialogPrimitive.Content>,
+    ComponentProps<typeof DialogPrimitive.Content>,
     VariantProps<typeof dialogContentVariants> {}
 
-const DialogContent = forwardRef<
-  ComponentRef<typeof DialogPrimitive.Content>,
-  DialogContentProps
->(({ className, variant, ...props }, ref) => (
-  <DialogPrimitive.Content
-    ref={ref}
-    className={cn(dialogContentVariants({ variant, className }))}
-    {...props}
-  />
-));
-DialogContent.displayName = DialogPrimitive.Content.displayName;
+function DialogContent({ className, variant, ...props }: DialogContentProps) {
+  return (
+    <DialogPrimitive.Content
+      className={cn(dialogContentVariants({ variant, className }))}
+      {...props}
+    />
+  );
+}
 
-const DialogHeader = ({
+function DialogHeader({ className, ...props }: ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col space-y-1.5 text-center sm:text-left",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function DialogFooter({ className, ...props }: ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function DialogTitle({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col space-y-1.5 text-center sm:text-left",
-      className,
-    )}
-    {...props}
-  />
-);
-DialogHeader.displayName = "DialogHeader";
+}: ComponentProps<typeof DialogPrimitive.Title>) {
+  return (
+    <DialogPrimitive.Title
+      className={cn(
+        "text-lg leading-none font-semibold tracking-tight",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
-const DialogFooter = ({
+function DialogDescription({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-      className,
-    )}
-    {...props}
-  />
-);
-DialogFooter.displayName = "DialogFooter";
-
-const DialogTitle = forwardRef<
-  ComponentRef<typeof DialogPrimitive.Title>,
-  ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Title
-    ref={ref}
-    className={cn(
-      "text-lg leading-none font-semibold tracking-tight",
-      className,
-    )}
-    {...props}
-  />
-));
-DialogTitle.displayName = DialogPrimitive.Title.displayName;
-
-const DialogDescription = forwardRef<
-  ComponentRef<typeof DialogPrimitive.Description>,
-  ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Description
-    ref={ref}
-    className={cn("text-muted-foreground text-sm", className)}
-    {...props}
-  />
-));
-DialogDescription.displayName = DialogPrimitive.Description.displayName;
+}: ComponentProps<typeof DialogPrimitive.Description>) {
+  return (
+    <DialogPrimitive.Description
+      className={cn("text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  );
+}
 
 export {
   Dialog,

@@ -60,6 +60,8 @@ const authItems = [
   },
 ];
 
+const currentYear = new Date().getFullYear();
+
 export async function AppSidebar() {
   const { userId } = await auth();
 
@@ -215,7 +217,7 @@ export async function AppSidebar() {
           </SidebarMenuItem>
           <SidebarMenuItem className="text-foreground/70 px-3.5 text-sm group-data-[collapsible=icon]:hidden">
             <span className="text-foreground/70 text-sm">
-              © {new Date().getFullYear()} {env.SITE_NAME}
+              © {currentYear} {env.SITE_NAME}
             </span>
           </SidebarMenuItem>
         </SidebarMenu>

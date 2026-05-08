@@ -7,25 +7,25 @@ import { Prisma, PrismaClient } from "@/lib/prisma";
 const adapter = new PrismaPg({ connectionString: env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
-type createUserParams = {
+interface createUserParams {
   externalId: string;
   username: string;
   email: string;
   image?: string;
-};
-type createVideoParams = {
+}
+interface createVideoParams {
   title: string;
   thumb: string;
   duration: string;
   youtubeId: string;
   userId: string;
-};
-type createPlaylistParams = {
+}
+interface createPlaylistParams {
   name: string;
   isPublic?: boolean;
   userId: string;
   videosId?: { id: string }[];
-};
+}
 
 async function createUser(params: createUserParams) {
   const { externalId, username, email, image } = params;

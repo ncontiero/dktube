@@ -1,9 +1,9 @@
-import { type HTMLAttributes, forwardRef } from "react";
+import type { ComponentProps } from "react";
 import Image, { type ImageProps } from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export interface CardRootProps extends HTMLAttributes<HTMLDivElement> {
+export interface CardRootProps extends ComponentProps<"div"> {
   readonly href?: string;
 }
 
@@ -18,89 +18,80 @@ export interface CardRootProps extends HTMLAttributes<HTMLDivElement> {
  *  </CardContent>
  * </CardRoot>
  */
-export const CardRoot = forwardRef<HTMLDivElement, CardRootProps>(
-  ({ className, children, href, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn("group/card relative flex w-full flex-col", className)}
-        {...props}
-      >
-        {href ? (
-          <>
-            <Link
-              href={href}
-              className={`
-                focus-visible:bg-secondary group-active/card:bg-secondary xs:-m-1 absolute inset-0 z-5 -my-1 rounded-xl
-                outline-hidden duration-200
-              `}
-            />
-            <div className="group-hover/card:bg-primary/20 xs:-m-1 absolute inset-0 z-4 -my-1 rounded-xl duration-300" />
-          </>
-        ) : null}
-        {children}
-      </div>
-    );
-  },
-);
-CardRoot.displayName = "CardRoot";
+export function CardRoot({
+  className,
+  children,
+  href,
+  ...props
+}: CardRootProps) {
+  return (
+    <div
+      className={cn("group/card relative flex w-full flex-col", className)}
+      {...props}
+    >
+      {href ? (
+        <>
+          <Link
+            href={href}
+            className={`
+              focus-visible:bg-secondary group-active/card:bg-secondary xs:-m-1 absolute inset-0 z-5 -my-1 rounded-xl
+              outline-hidden duration-200
+            `}
+          />
+          <div className="group-hover/card:bg-primary/20 xs:-m-1 absolute inset-0 z-4 -my-1 rounded-xl duration-300" />
+        </>
+      ) : null}
+      {children}
+    </div>
+  );
+}
 
 export interface CardImageProps extends ImageProps {}
 
-export const CardImage = forwardRef<HTMLImageElement, CardImageProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <Image
-        ref={ref}
-        className={cn(
-          "xs:rounded-xl aspect-video w-full object-cover",
-          className,
-        )}
-        {...props}
-      />
-    );
-  },
-);
-CardImage.displayName = "CardImage";
+export function CardImage({ className, ...props }: CardImageProps) {
+  return (
+    <Image
+      className={cn(
+        "xs:rounded-xl aspect-video w-full object-cover",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
-export interface CardContentProps extends HTMLAttributes<HTMLDivElement> {}
+export interface CardContentProps extends ComponentProps<"div"> {}
 
-export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "relative mt-3 flex w-full gap-2 px-2 md:px-0",
-          className,
-        )}
-        {...props}
-      />
-    );
-  },
-);
-CardContent.displayName = "CardContent";
+export function CardContent({ className, ...props }: CardContentProps) {
+  return (
+    <div
+      className={cn("relative mt-3 flex w-full gap-2 px-2 md:px-0", className)}
+      {...props}
+    />
+  );
+}
 
-export interface CardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
+export interface CardTitleProps extends ComponentProps<"h1"> {
   readonly titleMaxChars?: number;
 }
 
-export const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(
-  ({ className, children, titleMaxChars = 40, ...props }, ref) => {
-    return (
-      <h3
-        ref={ref}
-        className={cn(
-          "xs:text-base max-h-12 overflow-hidden px-0.5 text-sm font-semibold",
-          className,
-        )}
-        {...props}
-      >
-        {typeof children === "string" && children.length > titleMaxChars
-          ? `${children.slice(0, titleMaxChars)}...`
-          : children}
-      </h3>
-    );
-  },
-);
-CardTitle.displayName = "CardTitle";
+export function CardTitle({
+  className,
+  children,
+  titleMaxChars = 40,
+  ...props
+}: CardTitleProps) {
+  return (
+    <h3
+      className={cn(
+        "xs:text-base max-h-12 overflow-hidden px-0.5 text-sm font-semibold",
+        className,
+      )}
+      {...props}
+    >
+      {typeof children === "string" && children.length > titleMaxChars
+        ? `${children.slice(0, titleMaxChars)}...`
+        : children}
+    </h3>
+  );
+}

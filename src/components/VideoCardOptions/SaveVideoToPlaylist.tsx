@@ -43,7 +43,7 @@ export function SaveVideoPlaylistDialog({
 
   useEffect(() => {
     getPlaylists.execute();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react/exhaustive-deps
   }, [createPlaylistFormOpen]);
 
   return (

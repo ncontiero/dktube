@@ -7,10 +7,10 @@ import { handleVideoFromPlaylistAction } from "@/actions/playlist";
 import { Checkbox } from "../ui/Checkbox";
 import { Label } from "../ui/Label";
 
-export type PlaylistCheckboxProps = {
+export interface PlaylistCheckboxProps {
   readonly playlist: Playlist & { hasVideo: boolean };
   readonly videoId: string;
-};
+}
 
 export function PlaylistCheckbox({ playlist, videoId }: PlaylistCheckboxProps) {
   const [checked, setChecked] = useState(playlist.hasVideo);

@@ -1,31 +1,36 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import { useAction } from "next-safe-action/hooks";
 import { useSearchParams } from "next/navigation";
 import { updateHistoryAction } from "@/actions/history";
 
-export type VideoProps = {
+export interface VideoProps {
   readonly videoId: string;
   readonly startTime: number | undefined;
   readonly hasUser?: boolean;
-};
+}
 
 export function Video({ videoId, startTime, hasUser = false }: VideoProps) {
   const dbVideoId = useSearchParams().get("v");
   const [videoPlaying, setVideoPlaying] = useState(false);
-  const [videoCurrentTime, setVideoCurrentTime] = useState(startTime || 0);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const ambilightVideoRef = useRef<HTMLVideoElement>(null);
 
   const updateHistory = useAction(updateHistoryAction);
 
-  useEffect(() => {
+  const updateAmbilightCurrentTime = (currentTime?: number) => {
     if (!ambilightVideoRef.current) return;
-    ambilightVideoRef.current.currentTime = videoCurrentTime;
-  }, [videoCurrentTime]);
+    ambilightVideoRef.current.currentTime =
+      currentTime || videoRef.current?.currentTime || 0;
+  };
+
+  const handlePlayOrPause = (isPlaying: boolean) => {
+    setVideoPlaying(isPlaying);
+    updateAmbilightCurrentTime();
+  };
 
   return (
     <div className="relative flex size-full justify-center">
@@ -38,16 +43,10 @@ export function Video({ videoId, startTime, hasUser = false }: VideoProps) {
           src={`https://www.youtube.com/watch?v=${videoId}`}
           width="100%"
           height="100%"
-          onPlay={() => {
-            setVideoPlaying(true);
-            setVideoCurrentTime(videoRef.current?.currentTime || 0);
-          }}
-          onPause={() => {
-            setVideoPlaying(false);
-            setVideoCurrentTime(videoRef.current?.currentTime || 0);
-          }}
+          onPlay={() => handlePlayOrPause(true)}
+          onPause={() => handlePlayOrPause(false)}
           onProgress={({ currentTarget: { currentTime } }) => {
-            setVideoCurrentTime(currentTime);
+            updateAmbilightCurrentTime(currentTime);
             if (!hasUser) return;
             if (Math.floor(currentTime) % 5 === 0 && dbVideoId)
               updateHistory.execute({

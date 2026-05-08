@@ -4,11 +4,10 @@ import type { ImageProps } from "next/image";
 import type { Playlist, Video } from "@/lib/prisma";
 import type { CNonNullable } from "@/utils/types";
 import {
+  type ComponentProps,
   type CSSProperties,
-  type HTMLAttributes,
   createContext,
-  forwardRef,
-  useContext,
+  use,
   useMemo,
 } from "react";
 import { Lock } from "lucide-react";
@@ -25,17 +24,17 @@ export interface PlaylistCardContextProps {
 const PlaylistCardContext = createContext<PlaylistCardContextProps>({
   playlist: null,
 });
-const usePlaylistCardContext = () => useContext(PlaylistCardContext);
+const usePlaylistCardContext = () => use(PlaylistCardContext);
 
 interface PlaylistCardRootProps
-  extends
-    HTMLAttributes<HTMLDivElement>,
-    CNonNullable<PlaylistCardContextProps> {}
+  extends ComponentProps<"div">, CNonNullable<PlaylistCardContextProps> {}
 
-export const PlaylistCardRoot = forwardRef<
-  HTMLDivElement,
-  PlaylistCardRootProps
->(({ playlist, userId, className, ...props }, ref) => {
+export function PlaylistCardRoot({
+  playlist,
+  userId,
+  className,
+  ...props
+}: PlaylistCardRootProps) {
   const href = playlist.videos[0]
     ? `/watch?v=${playlist.videos[0].id}`
     : `/playlist/${playlist.id}`;
@@ -50,29 +49,30 @@ export const PlaylistCardRoot = forwardRef<
   );
 
   return (
-    <PlaylistCardContext.Provider value={contextValues}>
+    <PlaylistCardContext value={contextValues}>
       <CardRoot
-        ref={ref}
         href={href}
         className={cn(
-          "xs:max-w-[300px] xs:flex-col xs:gap-1.5 xs:pb-4 flex-row gap-0.5",
+          "xs:max-w-75 xs:flex-col xs:gap-1.5 xs:pb-4 flex-row gap-0.5",
           className,
         )}
         {...props}
       />
-    </PlaylistCardContext.Provider>
+    </PlaylistCardContext>
   );
-});
-PlaylistCardRoot.displayName = "PlaylistCardRoot";
+}
 
 interface PlaylistCardImageProps extends Partial<ImageProps> {
   readonly linkClassName?: string;
 }
 
-export const PlaylistCardImage = forwardRef<
-  HTMLImageElement,
-  PlaylistCardImageProps
->(({ className, linkClassName, width = 300, height = 180, ...props }, ref) => {
+export function PlaylistCardImage({
+  className,
+  linkClassName,
+  width = 300,
+  height = 180,
+  ...props
+}: PlaylistCardImageProps) {
   const { playlist, href } = usePlaylistCardContext();
   if (!playlist || !href) return null;
 
@@ -99,7 +99,6 @@ export const PlaylistCardImage = forwardRef<
         Reproduzir tudo
       </div>
       <CardImage
-        ref={ref}
         src={
           playlist.videos[0] ? playlist.videos[0].thumb : "/playlist-img.jpg"
         }
@@ -112,26 +111,23 @@ export const PlaylistCardImage = forwardRef<
       />
     </Link>
   );
-});
-PlaylistCardImage.displayName = "PlaylistCardImage";
+}
 
-interface PlaylistCardInfoProps extends HTMLAttributes<HTMLDivElement> {
+interface PlaylistCardInfoProps extends ComponentProps<"div"> {
   readonly linkClassName?: string;
 }
 
-export const PlaylistCardInfo = forwardRef<
-  HTMLDivElement,
-  PlaylistCardInfoProps
->(({ className, linkClassName, children, ...props }, ref) => {
+export function PlaylistCardInfo({
+  className,
+  linkClassName,
+  children,
+  ...props
+}: PlaylistCardInfoProps) {
   const { playlist } = usePlaylistCardContext();
   if (!playlist) return null;
 
   return (
-    <div
-      ref={ref}
-      className={cn("flex w-full flex-col px-1", className)}
-      {...props}
-    >
+    <div className={cn("flex w-full flex-col px-1", className)} {...props}>
       {children}
       <Link
         href={`/playlist/${playlist.id}`}
@@ -152,15 +148,15 @@ export const PlaylistCardInfo = forwardRef<
       </Link>
     </div>
   );
-});
-PlaylistCardInfo.displayName = "PlaylistCardInfo";
+}
 
 export interface PlaylistCardTitleProps extends CardTitleProps {}
 
-export const PlaylistCardTitle = forwardRef<
-  HTMLHeadingElement,
-  PlaylistCardTitleProps
->(({ className, children, ...props }, ref) => {
+export function PlaylistCardTitle({
+  className,
+  children,
+  ...props
+}: PlaylistCardTitleProps) {
   const { playlist, href } = usePlaylistCardContext();
   if (!playlist || !href) return null;
 
@@ -172,10 +168,9 @@ export const PlaylistCardTitle = forwardRef<
         ring-ring z-10 size-fit rounded-md duration-200 hover:opacity-90 focus:outline-hidden focus-visible:ring-2
       `}
     >
-      <CardTitle ref={ref} className={cn("text-base", className)} {...props}>
+      <CardTitle className={cn("text-base", className)} {...props}>
         {playlist.name}
       </CardTitle>
     </Link>
   );
-});
-PlaylistCardTitle.displayName = "PlaylistCardTitle";
+}
