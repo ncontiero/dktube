@@ -1,7 +1,6 @@
-import { experimental_createTheme as createTheme, shadcn } from "@clerk/themes";
+import { experimental_createTheme as createTheme } from "@clerk/themes";
 
 export const clerkTheme = createTheme({
-  theme: shadcn as any,
   elements: {
     // Box
     logoBox: "[&>a]:border! [&>a]:border-primary/50!",

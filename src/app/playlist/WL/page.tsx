@@ -15,7 +15,7 @@ export default async function WatchLaterPage() {
   if (!user) return RedirectToSignIn({});
 
   const cachedWatchLater = unstable_cache(
-    async () => await getWatchLater(user.id),
+    async () => getWatchLater(user.id),
     [user.id],
     { tags: ["watchLater", `watchLater:${user.id}`], revalidate: 60 },
   );

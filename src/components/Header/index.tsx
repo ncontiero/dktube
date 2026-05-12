@@ -24,7 +24,7 @@ import { UserButton } from "./UserButton";
 
 const getChannel = unstable_cache(
   async (externalId: string) => {
-    return await prisma.user.findUnique({
+    return prisma.user.findUnique({
       where: { externalId },
     });
   },

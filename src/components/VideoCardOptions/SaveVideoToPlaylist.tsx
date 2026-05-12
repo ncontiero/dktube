@@ -37,7 +37,7 @@ export function SaveVideoPlaylistDialog({
 
   const getPlaylists = useAction(getMyPlaylistsAction, {
     onSuccess: ({ data }) => {
-      setPlaylists(data || []);
+      setPlaylists(data ?? []);
     },
   });
 
@@ -88,7 +88,7 @@ export function SaveVideoPlaylistDialog({
                     <Skeleton className="h-6 w-1/2" />
                   </div>
                 ))
-              ) : !playlists ? (
+              ) : playlists == null || playlists.length === 0 ? (
                 <div className="my-2">Você não tem playlists!</div>
               ) : (
                 playlists.map((playlist) => (

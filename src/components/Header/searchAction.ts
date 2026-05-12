@@ -5,8 +5,7 @@ import { searchVideosSchema } from "@/actions/schema";
 import { actionClient } from "@/lib/safe-action";
 
 export const searchVideosAction = actionClient
-  .schema(searchVideosSchema)
-  // eslint-disable-next-line require-await
-  .action(async ({ clientInput: { search } }) => {
+  .inputSchema(searchVideosSchema)
+  .action(({ clientInput: { search } }) => {
     redirect(`/search?q=${search}`);
   });

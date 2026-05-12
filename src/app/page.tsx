@@ -13,7 +13,7 @@ import { prisma } from "@/lib/prisma";
 export default async function HomePage() {
   const cachedVideos = unstable_cache(
     async () =>
-      await prisma.video.findMany({
+      prisma.video.findMany({
         include: { user: true },
       }),
     ["videos"],

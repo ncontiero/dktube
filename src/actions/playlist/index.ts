@@ -183,12 +183,12 @@ export const handleVideoFromPlaylistAction = authActionClient
 export const getWatchLaterAction = authActionClient.action(
   async ({ ctx: { user } }) => {
     const cachedWatchLater = unstable_cache(
-      async () => await getWatchLater(user.id),
+      async () => getWatchLater(user.id),
       [`watchLater:${user.id}`],
       { tags: ["watchLater", `watchLater:${user.id}`], revalidate: 60 },
     );
 
-    return await cachedWatchLater();
+    return cachedWatchLater();
   },
 );
 

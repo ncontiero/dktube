@@ -28,7 +28,7 @@ type ChannelPageProps = PageProps<"/channel/[...id]">;
 const getCachedChannel = (id: string) =>
   unstable_cache(
     async () => {
-      return await prisma.user.findUnique({
+      return prisma.user.findUnique({
         where: { id },
         include: { videos: true, playlists: { include: { videos: true } } },
       });
@@ -226,7 +226,7 @@ export default async function ChannelPage(props: ChannelPageProps) {
               value="videos"
               className="mx-auto my-2 flex size-full max-w-7xl flex-col flex-wrap gap-4 px-2 xs:flex-row"
             >
-              {[mainVideo!, ...videos].map((video) => (
+              {[mainVideo, ...videos].map((video) => (
                 <VideoCardRoot
                   key={video.id}
                   video={{ ...video, user: channel }}

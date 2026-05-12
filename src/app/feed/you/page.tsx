@@ -56,7 +56,7 @@ export default async function YouPage() {
 
   const cachedYou = unstable_cache(
     async () => {
-      return await prisma.user.findUnique({
+      return prisma.user.findUnique({
         where: { externalId: userId },
         include: {
           history: { include: { video: true } },

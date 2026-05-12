@@ -37,7 +37,7 @@ export default async function HistoryPage({
 
   const cachedHistoryVideos = unstable_cache(
     async () => {
-      return await prisma.historyVideo.findMany({
+      return prisma.historyVideo.findMany({
         where: {
           user: { externalId: userId },
           video: {

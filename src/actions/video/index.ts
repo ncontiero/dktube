@@ -11,6 +11,14 @@ import {
   removeVideoSchema,
 } from "./schema";
 
+interface YoutubeAPIResponse {
+  items: {
+    contentDetails: {
+      duration: string;
+    };
+  }[];
+}
+
 export const createVideoAction = authActionClient
   .inputSchema(createVideoSchema)
   .action(async ({ clientInput: { title, youtubeId }, ctx: { user } }) => {
@@ -19,13 +27,25 @@ export const createVideoAction = authActionClient
       throw new Error("Houve um erro ao obter a thumbnail do vídeo!");
     }
 
-    const details = await (
-      await fetch(
-        `https://www.googleapis.com/youtube/v3/videos?id=${youtubeId}&key=${env.GC_API_KEY}&part=contentDetails`,
-      )
-    ).json();
+    const request = await fetch(
+      `https://www.googleapis.com/youtube/v3/videos?id=${youtubeId}&key=${env.GC_API_KEY}&part=contentDetails`,
+    );
+    if (!request.ok) {
+      throw new Error("Houve um erro ao obter os detalhes do vídeo!");
+    }
 
-    const ytDuration = details.items[0].contentDetails.duration as string;
+    const details = (await request.json()) as YoutubeAPIResponse;
+    const detailsItems = details?.items;
+    if (detailsItems == null || detailsItems.length === 0) {
+      throw new Error("Vídeo não encontrado no YouTube!");
+    }
+
+    const video = detailsItems[0];
+    if (!video) {
+      throw new Error("Vídeo não encontrado no YouTube!");
+    }
+
+    const ytDuration = video.contentDetails.duration;
     const duration = formatDuration(ytDuration);
 
     try {

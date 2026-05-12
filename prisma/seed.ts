@@ -29,7 +29,7 @@ interface createPlaylistParams {
 
 async function createUser(params: createUserParams) {
   const { externalId, username, email, image } = params;
-  return await prisma.user.create({
+  return prisma.user.create({
     data: {
       externalId,
       username,
@@ -40,7 +40,7 @@ async function createUser(params: createUserParams) {
 }
 async function createVideo(params: createVideoParams) {
   const { title, thumb, youtubeId, userId, duration } = params;
-  return await prisma.video.create({
+  return prisma.video.create({
     data: {
       title,
       thumb,
@@ -52,7 +52,7 @@ async function createVideo(params: createVideoParams) {
 }
 async function createPlaylist(params: createPlaylistParams) {
   const { name, isPublic = true, userId, videosId = [] } = params;
-  return await prisma.playlist.create({
+  return prisma.playlist.create({
     data: {
       name,
       isPublic,
@@ -109,7 +109,7 @@ async function main() {
 
 main()
   .then(async () => {
-    return await prisma.$disconnect();
+    return prisma.$disconnect();
   })
   .catch(async (error) => {
     console.error(error);

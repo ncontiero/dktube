@@ -17,7 +17,7 @@ export const deleteHistoryAction = authActionClient.action(
       where: { user: { externalId: user.id } },
     });
 
-    if (!history) {
+    if (history == null || history.length === 0) {
       throw new Error("Histórico não encontrado!");
     }
 
@@ -36,8 +36,7 @@ export const deleteHistoryAction = authActionClient.action(
 
 export const searchVideoOnHistoryAction = actionClient
   .inputSchema(searchVideoOnHistorySchema)
-  // eslint-disable-next-line require-await
-  .action(async ({ clientInput: { search } }) => {
+  .action(({ clientInput: { search } }) => {
     redirect(`/feed/history?query=${search}`);
   });
 
@@ -63,7 +62,7 @@ export const getTimeWatchedAction = actionClient
       { tags: [`history:${userId}`], revalidate: 60 },
     );
 
-    return await cachedHistory();
+    return cachedHistory();
   });
 
 export const removeVideoFromHistoryAction = authActionClient

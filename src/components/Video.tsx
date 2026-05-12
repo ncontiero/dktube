@@ -24,7 +24,7 @@ export function Video({ videoId, startTime, hasUser = false }: VideoProps) {
   const updateAmbilightCurrentTime = (currentTime?: number) => {
     if (!ambilightVideoRef.current) return;
     ambilightVideoRef.current.currentTime =
-      currentTime || videoRef.current?.currentTime || 0;
+      currentTime ?? videoRef.current?.currentTime ?? 0;
   };
 
   const handlePlayOrPause = (isPlaying: boolean) => {
@@ -54,8 +54,8 @@ export function Video({ videoId, startTime, hasUser = false }: VideoProps) {
                 videoId: dbVideoId,
               });
           }}
-          autoPlay={!!startTime}
-          config={startTime ? { youtube: { start: startTime } } : {}}
+          autoPlay={startTime != null}
+          config={startTime != null ? { youtube: { start: startTime } } : {}}
           controls
         />
       </div>

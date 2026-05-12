@@ -42,7 +42,7 @@ export function PlaylistCardRoot({
   const contextValues = useMemo(
     () => ({
       userId: userId || null,
-      playlist: playlist || null,
+      playlist: playlist ?? null,
       href,
     }),
     [href, playlist, userId],

@@ -29,7 +29,7 @@ interface WatchPageProps {
 
 const getCachedVideos = unstable_cache(
   async (excludeId?: string) => {
-    return await prisma.video.findMany({
+    return prisma.video.findMany({
       include: { user: true, likedVideosUsers: { select: { id: true } } },
       where: excludeId ? { id: { not: excludeId } } : {},
     });

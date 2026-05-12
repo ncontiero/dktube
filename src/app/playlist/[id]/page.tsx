@@ -10,7 +10,7 @@ type PlaylistPageProps = PageProps<"/playlist/[id]">;
 const getCachedPlaylist = (id: string) =>
   unstable_cache(
     async () => {
-      return await prisma.playlist.findUnique({
+      return prisma.playlist.findUnique({
         where: { id },
         include: {
           user: true,

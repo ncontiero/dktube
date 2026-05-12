@@ -57,10 +57,10 @@ export const getUser = async <T extends Prisma.UserInclude>(
     return null;
   }
 
-  return (await prisma.user.findUnique({
+  return prisma.user.findUnique({
     where: { externalId: userExternalId },
     include,
-  })) as UserPayload<T> | null;
+  });
 };
 
 export const getWatchLater = async (
@@ -70,7 +70,7 @@ export const getWatchLater = async (
     watchLater: { include: { user: true } },
   });
   if (!user) return null;
-  return watchLaterObj(user, user.watchLater || []);
+  return watchLaterObj(user, user.watchLater ?? []);
 };
 
 export const getLikedVideos = async (
@@ -80,5 +80,5 @@ export const getLikedVideos = async (
     likedVideos: { include: { user: true } },
   });
   if (!user) return null;
-  return likedVideosObj(user, user.likedVideos || []);
+  return likedVideosObj(user, user.likedVideos ?? []);
 };

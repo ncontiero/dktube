@@ -15,7 +15,7 @@ export default async function LikedVideosPage() {
   if (!user) return RedirectToSignIn({});
 
   const cachedLikedVideos = unstable_cache(
-    async () => await getLikedVideos(user.id),
+    async () => getLikedVideos(user.id),
     [user.id],
     { tags: ["likedVideos", `likedVideos:${user.id}`], revalidate: 60 },
   );

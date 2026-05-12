@@ -22,7 +22,7 @@ export default async function PlaylistsPage() {
 
   const cachedUserPlaylists = unstable_cache(
     async () => {
-      return await prisma.user.findUnique({
+      return prisma.user.findUnique({
         where: { externalId: userId },
         include: {
           watchLater: { include: { user: true } },

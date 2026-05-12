@@ -67,7 +67,7 @@ export interface VideoCardRootProps extends ComponentProps<"div"> {
  */
 export function VideoCardRoot({
   video,
-  timeWatched: timeWatchedB,
+  timeWatched: timeWatchedB = 0,
   ...props
 }: VideoCardRootProps) {
   const { user } = useUser();
@@ -133,7 +133,11 @@ export function VideoCardThumb({
   height = 200,
   ...props
 }: VideoCardThumbProps) {
-  const { video, percentageWatched, timeWatched } = useVideoCardContext();
+  const {
+    video,
+    percentageWatched = 0,
+    timeWatched = 0,
+  } = useVideoCardContext();
   if (!video) return null;
 
   return (
@@ -265,7 +269,7 @@ export function VideoCardChannelName({
       )}
       {...props}
     >
-      {children || video.user.username}
+      {children ?? video.user.username}
     </span>
   );
 }
@@ -273,7 +277,7 @@ export function VideoCardChannelName({
 export interface VideoCardTitleProps extends CardTitleProps {}
 
 export function VideoCardTitle(props: VideoCardTitleProps) {
-  const { video, timeWatched } = useVideoCardContext();
+  const { video, timeWatched = 0 } = useVideoCardContext();
   if (!video) return null;
 
   return (
