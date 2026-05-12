@@ -34,11 +34,11 @@ export function CardRoot({
           <Link
             href={href}
             className={`
-              focus-visible:bg-secondary group-active/card:bg-secondary xs:-m-1 absolute inset-0 z-5 -my-1 rounded-xl
-              outline-hidden duration-200
+              absolute inset-0 z-5 -my-1 rounded-xl outline-hidden duration-200 group-active/card:bg-secondary
+              focus-visible:bg-secondary xs:-m-1
             `}
           />
-          <div className="group-hover/card:bg-primary/20 xs:-m-1 absolute inset-0 z-4 -my-1 rounded-xl duration-300" />
+          <div className="absolute inset-0 z-4 -my-1 rounded-xl duration-300 group-hover/card:bg-primary/20 xs:-m-1" />
         </>
       ) : null}
       {children}
@@ -52,7 +52,7 @@ export function CardImage({ className, ...props }: CardImageProps) {
   return (
     <Image
       className={cn(
-        "xs:rounded-xl aspect-video w-full object-cover",
+        "aspect-video w-full object-cover xs:rounded-xl",
         className,
       )}
       {...props}
@@ -84,7 +84,7 @@ export function CardTitle({
   return (
     <h3
       className={cn(
-        "xs:text-base max-h-12 overflow-hidden px-0.5 text-sm font-semibold",
+        "max-h-12 overflow-hidden px-0.5 text-sm font-semibold xs:text-base",
         className,
       )}
       {...props}

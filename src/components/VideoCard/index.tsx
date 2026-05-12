@@ -141,8 +141,8 @@ export function VideoCardThumb({
       href={`/watch?v=${video.id}${timeWatched ? `&t=${timeWatched}` : ""}`}
       className={cn(
         `
-          ring-ring xs:rounded-xl relative z-10 w-full overflow-hidden outline-hidden duration-200 hover:opacity-90
-          focus-visible:ring-2
+          relative z-10 w-full overflow-hidden ring-ring outline-hidden duration-200 hover:opacity-90
+          focus-visible:ring-2 xs:rounded-xl
         `,
         linkClassName,
       )}
@@ -155,14 +155,14 @@ export function VideoCardThumb({
         quality={100}
         {...props}
       />
-      <div className="bg-background absolute right-2 bottom-2 rounded-md px-1 py-0.5 text-sm">
+      <div className="absolute right-2 bottom-2 rounded-md bg-background px-1 py-0.5 text-sm">
         {video.duration}
       </div>
       {percentageWatched ? (
-        <div className="bg-foreground/50 absolute bottom-0 h-1 w-full">
+        <div className="absolute bottom-0 h-1 w-full bg-foreground/50">
           <div
             style={{ width: `${percentageWatched}%` }}
-            className="bg-primary h-1"
+            className="h-1 bg-primary"
           />
         </div>
       ) : null}
@@ -214,7 +214,7 @@ export function VideoCardChannel({
         href={`/channel/${video.user.id}`}
         className={cn(
           `
-            group/channel ring-ring ring-offset-background flex items-center gap-2 outline-hidden duration-200
+            group/channel flex items-center gap-2 ring-ring ring-offset-background outline-hidden duration-200
             focus:ring-2 focus:ring-offset-2
           `,
           className,
@@ -281,7 +281,7 @@ export function VideoCardTitle(props: VideoCardTitleProps) {
       href={`/watch?v=${video.id}${timeWatched ? `&t=${timeWatched}` : ""}`}
       title={video.title}
       className={`
-        ring-ring z-10 size-fit rounded-md pr-6 duration-200 hover:opacity-90 focus:outline-hidden focus-visible:ring-2
+        z-10 size-fit rounded-md pr-6 ring-ring duration-200 hover:opacity-90 focus:outline-hidden focus-visible:ring-2
       `}
     >
       <CardTitle {...props}>{video.title}</CardTitle>

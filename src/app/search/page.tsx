@@ -100,7 +100,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   };
 
   return (
-    <div className="xs:my-10 xs:px-2 mx-auto mb-10 flex max-w-5xl flex-col gap-4">
+    <div className="mx-auto mb-10 flex max-w-5xl flex-col gap-4 xs:my-10 xs:px-2">
       <div className="flex flex-col gap-4">
         {searchResults.map((result, i) => (
           <Fragment key={result.id}>
@@ -109,17 +109,17 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             ) : null}
             <CardRoot
               href={createURL(result.id, result.user ? "video" : "channel")}
-              className={`gap-3 ${result.user ? "xs:flex-row xs:pb-0 pb-4" : "xs:px-0 flex-row px-4"}`}
+              className={`gap-3 ${result.user ? "pb-4 xs:flex-row xs:pb-0" : "flex-row px-4 xs:px-0"}`}
             >
               <Link
                 href={`/watch?v=${result.id}`}
                 className={`
-                  ring-ring xs:max-w-[360px] relative z-10 w-full outline-hidden duration-200 hover:opacity-90
-                  focus-visible:ring-2
+                  relative z-10 w-full ring-ring outline-hidden duration-200 hover:opacity-90 focus-visible:ring-2
+                  xs:max-w-[360px]
                   ${
                     result.user
                       ? `xs:max-h-[230px]`
-                      : `xs:max-h-[136px] xs:w-full flex w-[136px] justify-center rounded-full`
+                      : `flex w-[136px] justify-center rounded-full xs:max-h-[136px] xs:w-full`
                   } xs:rounded-xl`}
               >
                 <Image
@@ -129,22 +129,22 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                   height={result.user ? 230 : 136}
                   className={`object-cover ${
                     result.user
-                      ? "xs:rounded-xl aspect-video w-full"
+                      ? "aspect-video w-full xs:rounded-xl"
                       : `aspect-square rounded-full`
                   }`}
                 />
               </Link>
-              <CardContent className="xs:mt-0.5 xs:px-0.5 mt-0 flex-col px-2.5 md:px-0.5">
+              <CardContent className="mt-0 flex-col px-2.5 xs:mt-0.5 xs:px-0.5 md:px-0.5">
                 <Link
                   href={`/watch?v=${result.id}`}
                   title={result.label}
                   className={`
-                    ring-ring z-10 size-fit rounded-md pr-14 duration-200 hover:opacity-90 focus:outline-hidden
+                    z-10 size-fit rounded-md pr-14 ring-ring duration-200 hover:opacity-90 focus:outline-hidden
                     focus-visible:ring-2
                   `}
                 >
                   <CardTitle
-                    className="xs:text-lg max-h-max overflow-auto text-base"
+                    className="max-h-max overflow-auto text-base xs:text-lg"
                     titleMaxChars={50}
                   >
                     {result.label}
@@ -154,7 +154,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                   <>
                     <Link
                       className={`
-                        group ring-ring z-10 flex size-fit items-center gap-2 rounded-md outline-hidden duration-200
+                        group z-10 flex size-fit items-center gap-2 rounded-md ring-ring outline-hidden duration-200
                         focus:ring-2
                       `}
                       href={`/channel/${result.user.id}`}
@@ -178,7 +178,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             </CardRoot>
             {!result.user ? (
               <Separator
-                className={`${!searchResults[i + 1]?.user ? "xs:hidden flex" : ""}`}
+                className={`${!searchResults[i + 1]?.user ? "flex xs:hidden" : ""}`}
               />
             ) : null}
           </Fragment>

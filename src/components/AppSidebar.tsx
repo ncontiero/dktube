@@ -80,8 +80,8 @@ export async function AppSidebar() {
                 <div className="mt-1 group-data-[collapsible=icon]:size-full group-data-[collapsible=icon]:pl-1.5">
                   <SidebarTrigger />
                 </div>
-                <div className="grid flex-1 truncate text-left text-sm leading-tight">
-                  <span className="ring-ring rounded-md p-2 duration-200 focus:ring-2 focus:outline-hidden">
+                <div className="grid flex-1 truncate text-left text-sm/tight">
+                  <span className="rounded-md p-2 ring-ring duration-200 focus:ring-2 focus:outline-hidden">
                     <Logo />
                   </span>
                 </div>
@@ -110,8 +110,8 @@ export async function AppSidebar() {
           <SidebarGroup>
             <SidebarGroupLabel
               className={`
-                hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent
-                active:text-sidebar-accent-foreground h-9 duration-200 focus-visible:ring-2
+                h-9 duration-200 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2
+                active:bg-sidebar-accent active:text-sidebar-accent-foreground
               `}
               asChild
             >
@@ -215,8 +215,8 @@ export async function AppSidebar() {
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
-          <SidebarMenuItem className="text-foreground/70 px-3.5 text-sm group-data-[collapsible=icon]:hidden">
-            <span className="text-foreground/70 text-sm">
+          <SidebarMenuItem className="px-3.5 text-sm text-foreground/70 group-data-[collapsible=icon]:hidden">
+            <span className="text-sm text-foreground/70">
               © {currentYear} {env.SITE_NAME}
             </span>
           </SidebarMenuItem>

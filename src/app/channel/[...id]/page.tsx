@@ -100,8 +100,8 @@ export default async function ChannelPage(props: ChannelPageProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="xs:flex-row xs:items-start mx-auto mt-4 flex w-full max-w-7xl flex-col items-center px-4 pt-4">
-        <div className="xs:mb-3 xs:mr-6 xs:size-auto size-14 max-w-max">
+      <div className="mx-auto mt-4 flex w-full max-w-7xl flex-col items-center px-4 pt-4 xs:flex-row xs:items-start">
+        <div className="size-14 max-w-max xs:mr-6 xs:mb-3 xs:size-auto">
           <Image
             src={channel.image}
             alt={channel.username}
@@ -110,7 +110,7 @@ export default async function ChannelPage(props: ChannelPageProps) {
             className="aspect-square rounded-full object-cover"
           />
         </div>
-        <div className="xs:mt-4 xs:items-start mt-2 flex flex-col items-center">
+        <div className="mt-2 flex flex-col items-center xs:mt-4 xs:items-start">
           <div>
             <h1 className="text-2xl font-semibold">{channel.username}</h1>
           </div>
@@ -125,9 +125,9 @@ export default async function ChannelPage(props: ChannelPageProps) {
         </div>
       ) : (
         <Tabs defaultValue={initialTab}>
-          <TabsList className="border-secondary h-auto w-full rounded-none border-b bg-transparent p-0">
+          <TabsList className="h-auto w-full rounded-none border-b border-secondary bg-transparent p-0">
             <ScrollArea className="w-full">
-              <div className="xs:px-2 relative mx-auto flex w-full max-w-7xl pt-4">
+              <div className="relative mx-auto flex w-full max-w-7xl pt-4 xs:px-2">
                 {tabs
                   .filter(
                     (tab) =>
@@ -142,9 +142,9 @@ export default async function ChannelPage(props: ChannelPageProps) {
                       key={tab.value}
                       value={tab.value}
                       className={`
-                        text-foreground/80 hover:bg-secondary hover:text-foreground
-                        data-[state=active]:border-foreground hover:data-[state=active]:bg-secondary rounded-none
-                        rounded-t-lg border-b border-transparent px-6 py-4 text-sm font-medium uppercase duration-200
+                        rounded-none rounded-t-lg border-b border-transparent px-6 py-4 text-sm font-medium
+                        text-foreground/80 uppercase duration-200 hover:bg-secondary hover:text-foreground
+                        data-[state=active]:border-foreground hover:data-[state=active]:bg-secondary
                       `}
                       asChild
                     >
@@ -159,48 +159,48 @@ export default async function ChannelPage(props: ChannelPageProps) {
           </TabsList>
           <TabsContent
             value="home"
-            className="xs:px-2 mx-auto flex size-full max-w-7xl flex-col"
+            className="mx-auto flex size-full max-w-7xl flex-col xs:px-2"
           >
             {mainVideo ? (
               <>
-                <div className="xs:max-w-3xl mt-2 w-full">
+                <div className="mt-2 w-full xs:max-w-3xl">
                   <VideoCardRoot
                     video={{ ...mainVideo, user: channel }}
-                    className="xs:flex-row xs:pb-0 gap-3 pb-4"
+                    className="gap-3 pb-4 xs:flex-row xs:pb-0"
                   >
                     <VideoCardThumb linkClassName="xs:max-h-[150px] xs:max-w-[250px]" />
                     <VideoCardInfo className="mt-0 px-0">
-                      <div className="xs:mt-0.5 xs:flex-col xs:px-0.5 flex w-full px-2">
+                      <div className="flex w-full px-2 xs:mt-0.5 xs:flex-col xs:px-0.5">
                         <VideoCardTitle
                           titleMaxChars={90}
                           className="max-h-none overflow-auto text-base md:text-lg"
                         />
-                        <VideoCardChannel className="xs:flex mt-1 hidden size-fit rounded-md px-0.5 md:mt-0.5">
+                        <VideoCardChannel className="mt-1 hidden size-fit rounded-md px-0.5 xs:flex md:mt-0.5">
                           <VideoCardChannelName className="md:text-sm" />
                         </VideoCardChannel>
                       </div>
                     </VideoCardInfo>
                   </VideoCardRoot>
                 </div>
-                <Separator className="xs:mb-4 xs:mt-6 mt-2 mb-4" />
+                <Separator className="mt-2 mb-4 xs:mt-6 xs:mb-4" />
               </>
             ) : null}
             <div className="px-3">
               <Link
                 className={`
-                  ring-ring text-lg font-bold outline-hidden duration-200 hover:opacity-80 focus-visible:ring-2
+                  text-lg font-bold ring-ring outline-hidden duration-200 hover:opacity-80 focus-visible:ring-2
                 `}
                 href={`/channel/${channel.id}/videos`}
               >
                 Vídeos
               </Link>
               <ScrollArea className="mt-4">
-                <div className="xs:flex-row xs:gap-2 flex flex-col gap-3 p-1">
+                <div className="flex flex-col gap-3 p-1 xs:flex-row xs:gap-2">
                   {videos.slice(0, 5).map((video) => (
                     <VideoCardRoot
                       key={video.id}
                       video={{ ...video, user: channel }}
-                      className="xs:w-[210px] xs:flex-col xs:pb-4 flex-row"
+                      className="flex-row xs:w-[210px] xs:flex-col xs:pb-4"
                     >
                       <VideoCardThumb
                         className="rounded-xl"
@@ -224,13 +224,13 @@ export default async function ChannelPage(props: ChannelPageProps) {
           {channelHasVideos ? (
             <TabsContent
               value="videos"
-              className="xs:flex-row mx-auto my-2 flex size-full max-w-7xl flex-col flex-wrap gap-4 px-2"
+              className="mx-auto my-2 flex size-full max-w-7xl flex-col flex-wrap gap-4 px-2 xs:flex-row"
             >
               {[mainVideo!, ...videos].map((video) => (
                 <VideoCardRoot
                   key={video.id}
                   video={{ ...video, user: channel }}
-                  className="xs:max-w-[300px] xs:flex-col xs:pb-2 flex-row"
+                  className="flex-row xs:max-w-[300px] xs:flex-col xs:pb-2"
                 >
                   <VideoCardThumb
                     linkClassName="rounded-xl xs:max-h-[180px] xs:max-w-[300px]"
@@ -238,7 +238,7 @@ export default async function ChannelPage(props: ChannelPageProps) {
                     width={300}
                     height={180}
                   />
-                  <VideoCardInfo className="xs:mt-2 mt-0">
+                  <VideoCardInfo className="mt-0 xs:mt-2">
                     <div className="flex flex-col">
                       <VideoCardTitle className="text-base" />
                     </div>

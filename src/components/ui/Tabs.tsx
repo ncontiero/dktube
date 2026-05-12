@@ -14,7 +14,7 @@ function TabsList({
   return (
     <TabsPrimitive.List
       className={cn(
-        "bg-muted text-muted-foreground inline-flex h-10 items-center justify-center rounded-md p-1",
+        "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground",
         className,
       )}
       {...props}
@@ -30,10 +30,10 @@ function TabsTrigger({
     <TabsPrimitive.Trigger
       className={cn(
         `
-          ring-offset-background focus:ring-ring data-[state=active]:bg-background data-[state=active]:text-foreground
           inline-flex items-center justify-center rounded-sm px-3 py-1.5 text-sm font-medium whitespace-nowrap
-          duration-200 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none
-          disabled:cursor-not-allowed disabled:opacity-50 data-[state=active]:shadow-xs
+          ring-offset-background duration-200 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden
+          disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 data-[state=active]:bg-background
+          data-[state=active]:text-foreground data-[state=active]:shadow-xs
         `,
         className,
       )}
@@ -50,7 +50,7 @@ function TabsContent({
     <TabsPrimitive.Content
       className={cn(
         `
-          ring-ring ring-offset-background mt-2 focus-visible:ring-2 focus-visible:ring-offset-2
+          mt-2 ring-ring ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2
           focus-visible:outline-hidden
         `,
         className,

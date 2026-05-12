@@ -51,7 +51,7 @@ export function CreateVideoForm() {
         />
 
         {errors.title ? (
-          <p className="text-destructive text-sm">{errors.title.message}</p>
+          <p className="text-sm text-destructive">{errors.title.message}</p>
         ) : null}
       </div>
 
@@ -65,7 +65,7 @@ export function CreateVideoForm() {
         />
 
         {errors.youtubeId ? (
-          <p className="text-destructive text-sm">{errors.youtubeId.message}</p>
+          <p className="text-sm text-destructive">{errors.youtubeId.message}</p>
         ) : null}
       </div>
 

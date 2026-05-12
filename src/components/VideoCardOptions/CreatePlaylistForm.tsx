@@ -66,9 +66,9 @@ export function CreatePlaylistForm({
       onSubmit={handleSubmit(onSubmit)}
       data-state={createPlaylistFormOpen ? "open" : "closed"}
       className={`
-        data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-left-1/3
-        data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-left-1/3 data-[state=open]:animate-in duration-200
-        data-[state=closed]:hidden
+        duration-200 data-[state=closed]:hidden data-[state=closed]:animate-out data-[state=closed]:fade-out-0
+        data-[state=closed]:slide-out-to-left-1/3 data-[state=open]:animate-in data-[state=open]:fade-in-0
+        data-[state=open]:slide-in-from-left-1/3
       `}
       aria-hidden={!createPlaylistFormOpen}
     >
@@ -82,12 +82,12 @@ export function CreatePlaylistForm({
         />
 
         {errors.name ? (
-          <p className="text-destructive text-sm">{errors.name.message}</p>
+          <p className="text-sm text-destructive">{errors.name.message}</p>
         ) : null}
       </div>
 
       <Label
-        className="hover:bg-input/80 mt-4 flex cursor-pointer flex-col gap-2 rounded-xl p-2 duration-200"
+        className="mt-4 flex cursor-pointer flex-col gap-2 rounded-xl p-2 duration-200 hover:bg-input/80"
         htmlFor="isPublic"
       >
         <div className="flex w-full items-center justify-between">
@@ -99,7 +99,7 @@ export function CreatePlaylistForm({
           />
         </div>
         {errors.isPublic ? (
-          <p className="text-destructive text-sm">{errors.isPublic.message}</p>
+          <p className="text-sm text-destructive">{errors.isPublic.message}</p>
         ) : null}
       </Label>
 

@@ -40,16 +40,16 @@ export function SearchForm({ size = "md" }: { readonly size?: "sm" | "md" }) {
           type="text"
           placeholder="Buscar videos..."
           className={`
-            border-foreground/20 focus:border-ring w-full rounded-l-3xl border bg-transparent px-3 py-2 outline-hidden
-            duration-200
+            w-full rounded-l-3xl border border-foreground/20 bg-transparent px-3 py-2 outline-hidden duration-200
+            focus:border-ring
           `}
           {...form.register("search")}
         />
         <button
           type="submit"
           className={`
-            border-foreground/20 bg-foreground/10 outline-ring [&:not(:disabled):hover]:bg-foreground/20 rounded-r-3xl
-            border-y border-r px-2 duration-200 disabled:cursor-not-allowed disabled:opacity-70 sm:px-4 sm:py-2
+            rounded-r-3xl border-y border-r border-foreground/20 bg-foreground/10 px-2 outline-ring duration-200
+            disabled:cursor-not-allowed disabled:opacity-70 sm:px-4 sm:py-2 [&:not(:disabled):hover]:bg-foreground/20
           `}
           title="Buscar"
           aria-label="Buscar"

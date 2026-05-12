@@ -72,7 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               pauseOnFocusLoss={false}
               limit={3}
               stacked
-              className="bg-background! font-inter! text-foreground! z-999999!"
+              className="z-999999! bg-background! font-inter! text-foreground!"
               toastClassName="bg-background! text-foreground!"
               progressClassName="bg-primary!"
             />

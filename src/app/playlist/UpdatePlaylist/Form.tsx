@@ -64,12 +64,12 @@ export function UpdatePlaylistForm({
         />
 
         {errors.name ? (
-          <p className="text-destructive text-sm">{errors.name.message}</p>
+          <p className="text-sm text-destructive">{errors.name.message}</p>
         ) : null}
       </div>
 
       <Label
-        className="hover:bg-input/80 mt-4 flex cursor-pointer flex-col gap-2 rounded-xl p-2 duration-200"
+        className="mt-4 flex cursor-pointer flex-col gap-2 rounded-xl p-2 duration-200 hover:bg-input/80"
         htmlFor="isPublic"
       >
         <div className="flex w-full items-center justify-between">
@@ -82,7 +82,7 @@ export function UpdatePlaylistForm({
         </div>
 
         {errors.isPublic ? (
-          <p className="text-destructive text-sm">{errors.isPublic.message}</p>
+          <p className="text-sm text-destructive">{errors.isPublic.message}</p>
         ) : null}
       </Label>
 

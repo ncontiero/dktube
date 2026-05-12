@@ -15,7 +15,7 @@ export function PageError({ title, description }: PageErrorProps) {
         <Link
           href="/"
           className={`
-            text-primary ring-ring hover:text-primary/80 rounded-md underline-offset-2 duration-200 hover:underline
+            rounded-md text-primary underline-offset-2 ring-ring duration-200 hover:text-primary/80 hover:underline
             focus:ring-2 focus:outline-hidden active:opacity-70
           `}
         >

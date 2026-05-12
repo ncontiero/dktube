@@ -73,9 +73,9 @@ export function SaveVideoPlaylistDialog({
           </div>
           <div
             className={`
-              data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-right-1/3
-              data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-right-1/3 data-[state=open]:animate-in flex
-              flex-col gap-4 duration-200 data-[state=closed]:hidden
+              flex flex-col gap-4 duration-200 data-[state=closed]:hidden data-[state=closed]:animate-out
+              data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-right-1/3 data-[state=open]:animate-in
+              data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-right-1/3
             `}
             data-state={createPlaylistFormOpen ? "closed" : "open"}
             aria-hidden={createPlaylistFormOpen}

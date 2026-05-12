@@ -53,7 +53,7 @@ export function PlaylistCardRoot({
       <CardRoot
         href={href}
         className={cn(
-          "xs:max-w-75 xs:flex-col xs:gap-1.5 xs:pb-4 flex-row gap-0.5",
+          "flex-row gap-0.5 xs:max-w-75 xs:flex-col xs:gap-1.5 xs:pb-4",
           className,
         )}
         {...props}
@@ -84,16 +84,16 @@ export function PlaylistCardImage({
       }
       className={cn(
         `
-          ring-ring xs:max-h-(--height) xs:max-w-(--width) relative z-10 rounded-xl outline-hidden duration-200
-          focus-visible:ring-2
+          relative z-10 rounded-xl ring-ring outline-hidden duration-200 focus-visible:ring-2 xs:max-h-(--height)
+          xs:max-w-(--width)
         `,
         linkClassName,
       )}
     >
       <div
         className={`
-          bg-background/80 xs:text-base absolute inset-0 z-10 flex items-center justify-center rounded-xl text-sm
-          font-semibold uppercase opacity-0 duration-300 group-hover/card:opacity-100
+          absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-background/80 text-sm font-semibold
+          uppercase opacity-0 duration-300 group-hover/card:opacity-100 xs:text-base
         `}
       >
         Reproduzir tudo
@@ -133,8 +133,8 @@ export function PlaylistCardInfo({
         href={`/playlist/${playlist.id}`}
         className={cn(
           `
-            text-foreground/60 ring-primary xs:text-sm hover:text-foreground focus-visible:text-foreground z-10 mt-2
-            flex w-fit items-center gap-1 rounded-md text-xs duration-200 focus:outline-hidden focus-visible:ring-2
+            z-10 mt-2 flex w-fit items-center gap-1 rounded-md text-xs text-foreground/60 ring-primary duration-200
+            hover:text-foreground focus:outline-hidden focus-visible:text-foreground focus-visible:ring-2 xs:text-sm
           `,
           linkClassName,
         )}
@@ -165,7 +165,7 @@ export function PlaylistCardTitle({
       href={href}
       title={playlist.name}
       className={`
-        ring-ring z-10 size-fit rounded-md duration-200 hover:opacity-90 focus:outline-hidden focus-visible:ring-2
+        z-10 size-fit rounded-md ring-ring duration-200 hover:opacity-90 focus:outline-hidden focus-visible:ring-2
       `}
     >
       <CardTitle className={cn("text-base", className)} {...props}>

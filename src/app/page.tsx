@@ -22,8 +22,8 @@ export default async function HomePage() {
   const videos = await cachedVideos();
 
   return (
-    <div className="xs:mt-6 xs:max-w-(--breakpoint-2xl) my-4 flex w-full justify-center gap-4 md:mx-auto xl:mt-12">
-      <div className="xs:grid xs:px-4 mdl:grid-cols-3 flex w-full grid-cols-2 flex-col gap-4 xl:grid-cols-4">
+    <div className="my-4 flex w-full justify-center gap-4 xs:mt-6 xs:max-w-(--breakpoint-2xl) md:mx-auto xl:mt-12">
+      <div className="flex w-full grid-cols-2 flex-col gap-4 xs:grid xs:px-4 mdl:grid-cols-3 xl:grid-cols-4">
         {videos.map((video) => (
           <VideoCardRoot key={video.id} video={video}>
             <VideoCardThumb />

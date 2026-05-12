@@ -117,15 +117,15 @@ export default async function WatchPage({ searchParams }: WatchPageProps) {
             />
           </div>
         </div>
-        <div className="mdl:px-0 mt-3 mb-4 flex w-full flex-col justify-start px-4">
-          <h1 className="mdl:text-xl z-10 text-base font-semibold md:text-lg">
+        <div className="mt-3 mb-4 flex w-full flex-col justify-start px-4 mdl:px-0">
+          <h1 className="z-10 text-base font-semibold md:text-lg mdl:text-xl">
             {video.title}
           </h1>
           <div className="flex items-center justify-between">
-            <div className="mdl:mt-3 mdl:gap-3 mt-4 flex gap-2">
+            <div className="mt-4 flex gap-2 mdl:mt-3 mdl:gap-3">
               <Link
                 href={`/channel/${video.user.id}`}
-                className="ring-ring rounded-full outline-hidden duration-200 hover:opacity-90 focus:ring-2"
+                className="rounded-full ring-ring outline-hidden duration-200 hover:opacity-90 focus:ring-2"
               >
                 <Image
                   src={video.user.image}
@@ -138,8 +138,8 @@ export default async function WatchPage({ searchParams }: WatchPageProps) {
               <Link
                 href={`/channel/${video.user.id}`}
                 className={`
-                  ring-ring mdl:self-auto mdl:font-semibold size-fit self-center truncate rounded-md px-0.5
-                  outline-hidden duration-200 hover:opacity-90 focus:ring-2
+                  size-fit self-center truncate rounded-md px-0.5 ring-ring outline-hidden duration-200 hover:opacity-90
+                  focus:ring-2 mdl:self-auto mdl:font-semibold
                 `}
               >
                 {video.user.username}
@@ -169,7 +169,7 @@ export default async function WatchPage({ searchParams }: WatchPageProps) {
           </div>
         </div>
       </div>
-      <div className="xs:gap-2.5 xs:px-4 flex size-full flex-col gap-6 md:px-0">
+      <div className="flex size-full flex-col gap-6 xs:gap-2.5 xs:px-4 md:px-0">
         <Separator className="mt-3 xl:hidden" />
         {videos
           .filter((v) => v.id !== video.id)
@@ -177,11 +177,11 @@ export default async function WatchPage({ searchParams }: WatchPageProps) {
             <VideoCardRoot
               key={v.id}
               video={v}
-              className="xs:mt-0 xs:flex-row mt-3 gap-1"
+              className="mt-3 gap-1 xs:mt-0 xs:flex-row"
             >
               <VideoCardThumb linkClassName="xs:max-h-[94px] xs:max-w-[168px]" />
-              <VideoCardInfo className="xs:mt-0.5 gap-0">
-                <VideoCardChannel className="xs:hidden size-9 rounded-full md:mt-1">
+              <VideoCardInfo className="gap-0 xs:mt-0.5">
+                <VideoCardChannel className="size-9 rounded-full xs:hidden md:mt-1">
                   <VideoCardChannelImage />
                 </VideoCardChannel>
                 <div className="flex flex-col">

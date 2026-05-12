@@ -90,27 +90,27 @@ export default async function YouPage() {
           xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)
         `}
       >
-        <div className="xs:items-start flex items-center gap-4">
+        <div className="flex items-center gap-4 xs:items-start">
           <Image
             src={you.image}
             alt={you.username}
             width={120}
             height={120}
             className={`
-              xs:max-h-[120px] xs:max-w-[120px] aspect-square max-h-[72px] max-w-[72px] rounded-full border object-cover
+              aspect-square max-h-[72px] max-w-[72px] rounded-full border object-cover xs:max-h-[120px] xs:max-w-[120px]
             `}
           />
           <Link
             href={`/channel/${you.id}`}
-            className="group ring-primary flex size-fit flex-col rounded-md outline-hidden duration-200 focus:ring-2"
+            className="group flex size-fit flex-col rounded-md ring-primary outline-hidden duration-200 focus:ring-2"
           >
-            <h1 className="xs:text-4xl text-xl font-bold uppercase">
+            <h1 className="text-xl font-bold uppercase xs:text-4xl">
               {you.username}
             </h1>
             <span
               className={`
-                text-foreground/60 xs:text-sm group-hover:text-foreground group-focus:text-foreground mt-1 text-xs
-                duration-200 group-hover:underline group-focus:underline
+                mt-1 text-xs text-foreground/60 duration-200 group-hover:text-foreground group-hover:underline
+                group-focus:text-foreground group-focus:underline xs:text-sm
               `}
             >
               Ver canal
@@ -132,12 +132,12 @@ export default async function YouPage() {
             </Button>
           </div>
           <ScrollArea>
-            <div className="xs:flex-row xs:gap-2 flex flex-col gap-3 p-1">
+            <div className="flex flex-col gap-3 p-1 xs:flex-row xs:gap-2">
               {you.history.slice(0, 5).map(({ video }) => (
                 <VideoCardRoot
                   key={video.id}
                   video={{ ...video, user: you }}
-                  className="xs:w-[214px] xs:flex-col xs:pb-4 flex-row"
+                  className="flex-row xs:w-[214px] xs:flex-col xs:pb-4"
                 >
                   <VideoCardThumb
                     className="rounded-xl"
@@ -220,7 +220,7 @@ export default async function YouPage() {
             </div>
           </div>
           <ScrollArea>
-            <div className="xs:flex-row xs:gap-2 flex flex-col gap-3 p-1">
+            <div className="flex flex-col gap-3 p-1 xs:flex-row xs:gap-2">
               {you.playlists.slice(0, 5).map((playlist) => (
                 <PlaylistCardRoot
                   key={playlist.id}
@@ -236,7 +236,7 @@ export default async function YouPage() {
                     className="md:px-0.5"
                     linkClassName="mt-0.5 xs:text-xs [&_svg]:size-3"
                   >
-                    <PlaylistCardTitle className="xs:text-sm text-sm" />
+                    <PlaylistCardTitle className="text-sm xs:text-sm" />
                   </PlaylistCardInfo>
                 </PlaylistCardRoot>
               ))}
@@ -262,12 +262,12 @@ export default async function YouPage() {
             </Button>
           </div>
           <ScrollArea>
-            <div className="xs:flex-row xs:gap-2 flex flex-col gap-3 p-1">
+            <div className="flex flex-col gap-3 p-1 xs:flex-row xs:gap-2">
               {you.watchLater.slice(0, 5).map((video) => (
                 <VideoCardRoot
                   key={video.id}
                   video={{ ...video, user: you }}
-                  className="xs:w-[214px] xs:flex-col xs:pb-4 flex-row"
+                  className="flex-row xs:w-[214px] xs:flex-col xs:pb-4"
                 >
                   <VideoCardThumb
                     className="rounded-xl"
@@ -302,12 +302,12 @@ export default async function YouPage() {
             </Button>
           </div>
           <ScrollArea>
-            <div className="xs:flex-row xs:gap-2 flex flex-col gap-3 p-1">
+            <div className="flex flex-col gap-3 p-1 xs:flex-row xs:gap-2">
               {you.likedVideos.slice(0, 5).map((video) => (
                 <VideoCardRoot
                   key={video.id}
                   video={{ ...video, user: you }}
-                  className="xs:w-[214px] xs:flex-col xs:pb-4 flex-row"
+                  className="flex-row xs:w-[214px] xs:flex-col xs:pb-4"
                 >
                   <VideoCardThumb
                     className="rounded-xl"
