@@ -22,7 +22,6 @@
     "allowJs": true,
     "checkJs": true,
     "strict": true,
-    "exactOptionalPropertyTypes": true,
     "noUncheckedIndexedAccess": true,
 
     // Output and Interoperability
