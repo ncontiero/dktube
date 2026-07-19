@@ -9,17 +9,22 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "pnpm db:generate && pnpm db:migrate:prod && next build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "check": "pnpm lint && pnpm typecheck",
+    "db:generate": "dotenv -e .env -- prisma generate",
+    "db:push": "dotenv -e .env -- prisma db push",
+    "db:migrate": "dotenv -e .env -- prisma migrate dev",
+    "db:migrate:prod": "dotenv -e .env -- prisma migrate deploy",
+    "db:studio": "dotenv -e .env -- prisma studio",
+    "db:seed": "dotenv -e .env -- prisma db seed",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
     "pre-commit": "lint-staged",
-    "postinstall": "prisma generate && next typegen",
-    "prisma:seed": "prisma db seed"
+    "postinstall": "pnpm db:generate && next typegen"
   },
   "dependencies": {
     "@clerk/localizations": "4.13.4",
@@ -62,7 +67,7 @@
     "@types/node": "25.9.5",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
-    "dotenv": "17.4.2",
+    "dotenv-cli": "11.0.0",
     "eslint": "10.7.0",
     "husky": "9.1.7",
     "lint-staged": "17.0.8",
@@ -77,7 +82,7 @@
     "node": ">=22"
   },
   "prisma": {
-    "seed": "pnpm prisma:seed"
+    "seed": "pnpm db:seed"
   },
   "lint-staged": {
     "*": "pnpm lint:fix"
