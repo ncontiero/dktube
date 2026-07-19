@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { ToastContainer } from "react-toastify";
 import { ptBR } from "@clerk/localizations";
 import { ClerkProvider } from "@clerk/nextjs";
-import { shadcn } from "@clerk/themes";
 import { Inter } from "next/font/google";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Header } from "@/components/Header";
@@ -56,10 +55,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <ClerkProvider
-      appearance={{ theme: [shadcn, clerkTheme] }}
-      localization={ptBR}
-    >
+    <ClerkProvider appearance={{ theme: clerkTheme }} localization={ptBR}>
       <html lang="pt-BR" suppressHydrationWarning>
         <body className={inter.variable}>
           <Providers>
