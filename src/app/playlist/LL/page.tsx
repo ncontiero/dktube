@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { RedirectToSignIn } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { unstable_cache } from "next/cache";
 import { notFound } from "next/navigation";
 import { getLikedVideos } from "@/utils/data";
@@ -11,13 +10,12 @@ export const metadata: Metadata = {
 };
 
 export default async function LikedVideosPage() {
-  const user = await currentUser();
-  if (!user) return RedirectToSignIn({});
+  const { userId } = await auth.protect();
 
   const cachedLikedVideos = unstable_cache(
-    async () => getLikedVideos(user.id),
-    [user.id],
-    { tags: ["likedVideos", `likedVideos:${user.id}`], revalidate: 60 },
+    async () => getLikedVideos(userId),
+    [userId],
+    { tags: ["likedVideos", `likedVideos:${userId}`], revalidate: 60 },
   );
 
   const likedVideos = await cachedLikedVideos();

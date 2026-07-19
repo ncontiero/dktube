@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { RedirectToSignIn } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { unstable_cache } from "next/cache";
 import { notFound } from "next/navigation";
 import { getWatchLater } from "@/utils/data";
@@ -11,17 +10,16 @@ export const metadata: Metadata = {
 };
 
 export default async function WatchLaterPage() {
-  const user = await currentUser();
-  if (!user) return RedirectToSignIn({});
+  const { userId } = await auth.protect();
 
   const cachedWatchLater = unstable_cache(
-    async () => getWatchLater(user.id),
-    [user.id],
-    { tags: ["watchLater", `watchLater:${user.id}`], revalidate: 60 },
+    async () => getWatchLater(userId),
+    [userId],
+    { tags: ["watchLater", `watchLater:${userId}`], revalidate: 60 },
   );
 
   const watchLater = await cachedWatchLater();
   if (!watchLater) notFound();
 
-  return <PlaylistPageComp userId={user.id} playlist={watchLater} />;
+  return <PlaylistPageComp userId={userId} playlist={watchLater} />;
 }

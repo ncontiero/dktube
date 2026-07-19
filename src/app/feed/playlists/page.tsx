@@ -15,10 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PlaylistsPage() {
-  const { userId } = await auth();
-  if (!userId) {
-    return null;
-  }
+  const { userId } = await auth.protect();
 
   const cachedUserPlaylists = unstable_cache(
     async () => {
