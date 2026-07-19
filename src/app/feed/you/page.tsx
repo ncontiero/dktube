@@ -86,8 +86,8 @@ export default async function YouPage() {
     <div className="flex flex-col gap-4">
       <div
         className={`
-          mx-auto my-6 flex size-full flex-col gap-6 px-4 md:max-w-md lg:max-w-(--breakpoint-md)
-          xl:max-w-(--breakpoint-lg) 2xl:max-w-(--breakpoint-xl)
+          mx-auto my-6 flex size-full flex-col gap-6 px-4 md:max-w-md lg:max-w-(--breakpoint-md) xl:max-w-(--breakpoint-lg)
+          2xl:max-w-(--breakpoint-xl)
         `}
       >
         <div className="flex items-center gap-4 xs:items-start">

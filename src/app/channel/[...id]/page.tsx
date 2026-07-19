@@ -187,9 +187,7 @@ export default async function ChannelPage(props: ChannelPageProps) {
             ) : null}
             <div className="px-3">
               <Link
-                className={`
-                  text-lg font-bold ring-ring outline-hidden duration-200 hover:opacity-80 focus-visible:ring-2
-                `}
+                className={`text-lg font-bold ring-ring outline-hidden duration-200 hover:opacity-80 focus-visible:ring-2`}
                 href={`/channel/${channel.id}/videos`}
               >
                 Vídeos

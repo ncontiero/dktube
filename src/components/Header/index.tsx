@@ -39,8 +39,8 @@ export async function Header() {
   return (
     <header
       className={`
-        fixed top-0 z-9999 flex h-14 w-full items-center border-b bg-secondary/60 pr-3 pl-2 backdrop-blur-md sm:h-16
-        sm:pr-6 sm:pl-4
+        fixed top-0 z-9999 flex h-14 w-full items-center border-b bg-secondary/60 pr-3 pl-2 backdrop-blur-md sm:h-16 sm:pr-6
+        sm:pl-4
       `}
     >
       <div className="flex size-full items-center justify-between gap-2">
@@ -99,9 +99,9 @@ export async function Header() {
             <Link
               href="/sign-in"
               className={`
-                flex size-full items-center justify-center gap-2 rounded-full p-2 font-bold uppercase ring-ring
-                duration-200 hover:text-primary focus:text-primary focus:ring-2 focus:outline-hidden active:opacity-70
-                sm:w-auto sm:rounded-3xl sm:px-4 sm:py-2
+                flex size-full items-center justify-center gap-2 rounded-full p-2 font-bold uppercase ring-ring duration-200
+                hover:text-primary focus:text-primary focus:ring-2 focus:outline-hidden active:opacity-70 sm:w-auto
+                sm:rounded-3xl sm:px-4 sm:py-2
               `}
             >
               Login

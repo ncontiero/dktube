@@ -145,8 +145,8 @@ export function VideoCardThumb({
       href={`/watch?v=${video.id}${timeWatched ? `&t=${timeWatched}` : ""}`}
       className={cn(
         `
-          relative z-10 w-full overflow-hidden ring-ring outline-hidden duration-200 hover:opacity-90
-          focus-visible:ring-2 xs:rounded-xl
+          relative z-10 w-full overflow-hidden ring-ring outline-hidden duration-200 hover:opacity-90 focus-visible:ring-2
+          xs:rounded-xl
         `,
         linkClassName,
       )}
@@ -218,8 +218,8 @@ export function VideoCardChannel({
         href={`/channel/${video.user.id}`}
         className={cn(
           `
-            group/channel flex items-center gap-2 ring-ring ring-offset-background outline-hidden duration-200
-            focus:ring-2 focus:ring-offset-2
+            group/channel flex items-center gap-2 ring-ring ring-offset-background outline-hidden duration-200 focus:ring-2
+            focus:ring-offset-2
           `,
           className,
         )}

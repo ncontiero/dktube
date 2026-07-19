@@ -92,8 +92,8 @@ export function PlaylistCardImage({
     >
       <div
         className={`
-          absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-background/80 text-sm font-semibold
-          uppercase opacity-0 duration-300 group-hover/card:opacity-100 xs:text-base
+          absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-background/80 text-sm font-semibold uppercase
+          opacity-0 duration-300 group-hover/card:opacity-100 xs:text-base
         `}
       >
         Reproduzir tudo
@@ -164,9 +164,7 @@ export function PlaylistCardTitle({
     <Link
       href={href}
       title={playlist.name}
-      className={`
-        z-10 size-fit rounded-md ring-ring duration-200 hover:opacity-90 focus:outline-hidden focus-visible:ring-2
-      `}
+      className={`z-10 size-fit rounded-md ring-ring duration-200 hover:opacity-90 focus:outline-hidden focus-visible:ring-2`}
     >
       <CardTitle className={cn("text-base", className)} {...props}>
         {playlist.name}

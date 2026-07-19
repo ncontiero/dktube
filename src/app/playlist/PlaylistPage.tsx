@@ -33,14 +33,12 @@ export function PlaylistPageComp({ playlist, userId }: PlaylistPageCompProps) {
   return (
     <div className="flex size-full flex-col gap-4">
       <div
-        className={`
-          mx-auto flex size-full max-w-(--breakpoint-2xl) flex-col gap-4 mdl:mt-4 mdl:flex-row mdl:px-4 mdl:pt-4
-        `}
+        className={`mx-auto flex size-full max-w-(--breakpoint-2xl) flex-col gap-4 mdl:mt-4 mdl:flex-row mdl:px-4 mdl:pt-4`}
       >
         <div
           className={`
-            flex flex-col items-center gap-4 overflow-hidden bg-linear-to-b from-primary/20 via-primary/10 to-background
-            p-4 sm:flex-row mdl:fixed mdl:w-fit mdl:flex-col mdl:gap-0 mdl:rounded-xl
+            flex flex-col items-center gap-4 overflow-hidden bg-linear-to-b from-primary/20 via-primary/10 to-background p-4
+            sm:flex-row mdl:fixed mdl:w-fit mdl:flex-col mdl:gap-0 mdl:rounded-xl
           `}
         >
           <Image

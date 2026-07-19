@@ -49,10 +49,7 @@ function TabsContent({
   return (
     <TabsPrimitive.Content
       className={cn(
-        `
-          mt-2 ring-ring ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2
-          focus-visible:outline-hidden
-        `,
+        `mt-2 ring-ring ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden`,
         className,
       )}
       {...props}

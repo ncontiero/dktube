@@ -62,8 +62,8 @@ export function Video({ videoId, startTime, hasUser = false }: VideoProps) {
       <div
         id="ambilight-video"
         className={`
-          pointer-events-none absolute top-0 left-0 z-[-1] size-full animate-in shadow-[0_0_120px_rgba(0,0,0,0)]
-          blur-[80px] saturate-300 delay-300 duration-1000 ease-in-out fade-in zoom-in
+          pointer-events-none absolute top-0 left-0 z-[-1] size-full animate-in shadow-[0_0_120px_rgba(0,0,0,0)] blur-[80px]
+          saturate-300 delay-300 duration-1000 ease-in-out fade-in zoom-in
         `}
       >
         <ReactPlayer
