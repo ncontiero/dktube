@@ -85,6 +85,6 @@
     "seed": "pnpm db:seed"
   },
   "lint-staged": {
-    "*": "pnpm lint:fix"
+    "*": "eslint --fix"
   }
 }
