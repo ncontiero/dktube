@@ -17,7 +17,7 @@ A project based on Youtube.
 
 You need to have a main dependency installed:
 
-- [Node.js](https://nodejs.dev/) LTS v20 (or any higher version)
+- [Node.js](https://nodejs.dev/) LTS v24 (or any higher version)
 
 Do you use `nvm`? Then you can run `nvm install` in the project folder to install and use the most appropriate version of Node.js.
 
