@@ -1,8 +1,9 @@
 minimumReleaseAge: 4320
-
-trustLockfile: true
+minimumReleaseAgeExcludePrune: true
 trustPolicy: no-downgrade
-trustPolicyIgnoreAfter: 10080 # 7 days
+trustPolicyExcludePrune: true
+trustPolicyExclude:
+  - prisma@7.10.1
 shellEmulator: true
 
 allowBuilds:
